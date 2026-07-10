@@ -18,14 +18,17 @@
       insecureSkipVerify: true
       defaultIndex: {{.ES_INDEX}}
       type: opensearch
-- endpoint: {{.HOSTED_PROMETHEUS}}
-  token: {{.HOSTED_PROMETHEUS_TOKEN}}
-  metrics:
-    - metrics-profiles/{{.HC_PRODUCT}}/hosted-cluster-metrics.yml
-  alerts:
-    - alerts-profiles/{{.HC_PRODUCT}}/hosted-cluster-alerts.yml
-  indexer:
-      esServers: ["{{.ES_SERVER}}"]
-      insecureSkipVerify: true
-      defaultIndex: {{.ES_INDEX}}
-      type: opensearch
+# TODO: Re-enable HOSTED_PROMETHEUS when HC ingress/routes are available for GCP HCP
+# Currently disabled because GCP HCP does not expose Prometheus routes
+# Workload metrics (podLatency, pprof, job summaries) are still collected without this
+#- endpoint: {{.HOSTED_PROMETHEUS}}
+#  token: {{.HOSTED_PROMETHEUS_TOKEN}}
+#  metrics:
+#    - metrics-profiles/{{.HC_PRODUCT}}/hosted-cluster-metrics.yml
+#  alerts:
+#    - alerts-profiles/{{.HC_PRODUCT}}/hosted-cluster-alerts.yml
+#  indexer:
+#      esServers: ["{{.ES_SERVER}}"]
+#      insecureSkipVerify: true
+#      defaultIndex: {{.ES_INDEX}}
+#      type: opensearch
